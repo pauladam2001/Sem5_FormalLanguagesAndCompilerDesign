@@ -1,0 +1,26 @@
+Alphabet:
+a. Lower case letters (a-z) of the English alphabet
+b. Decimal digits (0-9)
+c. Underscore ('_')
+
+1. Lexic:
+a. Special symbols:
+  - Operators: + - * / = == && || != ++ -- < <= > >=
+  - Separators: space : () [] {} \n
+  - Reserved words: integer, char, string, return, next, if, elsif, else, end, FOR, WHILE,
+			  puts, break
+b. Identifiers:
+- A sequence of letters and digits, such tat the first character is a letter; the rule is:
+	- identifier = "_" letter {letter | digit} "_"
+	- letter = "a" | "b" | ... | "z"
+	- digit = "0" | "1" | ... | "9"
+c. Constants:
+1. Integer - rule:
+	const_nr = 0 | ["+"|"-"] nz_digit {digit}
+	digit = "0" | "1" | ... | "9"
+	nz_digit = "1" | "2" | ... | "9"
+2. Character - rule:
+	char = 'letter' | 'digit' | 'special_char'
+	special_char = ! | ? | " | : | ; | # | $ | % | ^ | & | ...
+3. String - rule:
+	string = "{char}"
