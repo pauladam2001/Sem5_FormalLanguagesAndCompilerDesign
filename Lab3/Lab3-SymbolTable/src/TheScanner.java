@@ -1,17 +1,22 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TheScanner {
     private final LanguageSpecification languageSpecification = new LanguageSpecification();
     private SymbolTable symbolTable = new SymbolTable(10);
+
+    private ProgramInternalForm programInternalForm = new ProgramInternalForm();
     private final String programFile;
+    private final String symbolTableFile;
+    private final String programInternalFormFile;
 
     private boolean isCorrect = true;
 
-    public TheScanner(String programFile) {
+    public TheScanner(String programFile, String symbolTableFile, String programInternalFormFile) {
         this.programFile = programFile;
+        this.symbolTableFile = symbolTableFile;
+        this.programInternalFormFile = programInternalFormFile;
     }
 
     public void scan() throws FileNotFoundException {
@@ -31,7 +36,7 @@ public class TheScanner {
 
         scanner.close();
 
-         buildSymbolTable(pairsOfTokens);
+        buildSymbolTableAndProgramInternalForm(pairsOfTokens);
     }
 
     public ArrayList<String> tokenize(String line) {
@@ -157,19 +162,22 @@ public class TheScanner {
         return token.toString();
     }
 
-    public void buildSymbolTable(ArrayList<Pair<String, Integer>> pairsOfTokens) {
+    public void buildSymbolTableAndProgramInternalForm(ArrayList<Pair<String, Integer>> pairsOfTokens) {
         ArrayList<String> invalidTokens = new ArrayList<>();
 
         for (Pair<String, Integer> pair : pairsOfTokens) {
             String token = pair.getKey();
             if (languageSpecification.isOperator(token) || languageSpecification.isReservedWord(token) || languageSpecification.isSeparator(token)) {
-                // TODO PIF
-            } else if (languageSpecification.isIdentifier(token)) {
-                symbolTable.add(token);
-                // TODO PIF
+                int code = languageSpecification.getCode(token);
+                programInternalForm.add(token, new Pair<>(code, -1));
             } else if (languageSpecification.isConstant(token)) {
-                symbolTable.add(token);
-                // TODO PIF
+                symbolTable.add(token);         // only unique elements
+                int positionInSymbolTable = symbolTable.find(token);
+                programInternalForm.add(token, new Pair<>(0, positionInSymbolTable));
+            } else if (languageSpecification.isIdentifier(token)) {
+                symbolTable.add(token);         // only unique elements
+                int positionInSymbolTable = symbolTable.find(token);
+                programInternalForm.add(token, new Pair<>(1, positionInSymbolTable));
             } else if (!invalidTokens.contains(token)) {
                 invalidTokens.add(token);
                 isCorrect = false;
@@ -178,7 +186,7 @@ public class TheScanner {
         }
 
         if (isCorrect) {
-            System.out.println("Program is correct!");
+            System.out.println("Program is correct!\n");
         }
     }
 
@@ -186,7 +194,37 @@ public class TheScanner {
         if (isCorrect) {
             System.out.println(symbolTable);
         } else {
-            System.out.println("Program is not correct!");
+            System.out.println("Program is not correct!\n");
+        }
+    }
+
+    public void printProgramInternalForm() {
+        if (isCorrect) {
+            System.out.println(programInternalForm);
+        }
+    }
+
+    public void writeInFiles() throws IOException {
+        if (isCorrect) {
+            File STFile = new File(symbolTableFile);
+            FileWriter STFileWriter = new FileWriter(STFile, false);
+            BufferedWriter STWriter = new BufferedWriter(STFileWriter);
+            STWriter.write(symbolTable.toString());
+            STWriter.close();
+
+            File PIFFile = new File(programInternalFormFile);
+            FileWriter PIFFileWriter = new FileWriter(PIFFile, false);
+            BufferedWriter PIFWriter = new BufferedWriter(PIFFileWriter);
+            PIFWriter.write(programInternalForm.toString());
+            PIFWriter.close();
+        } else {
+            PrintWriter STWriter = new PrintWriter(symbolTableFile);
+            STWriter.print("");
+            STWriter.close();
+
+            PrintWriter PIFWriter = new PrintWriter(programInternalFormFile);
+            PIFWriter.print("");
+            PIFWriter.close();
         }
     }
 }

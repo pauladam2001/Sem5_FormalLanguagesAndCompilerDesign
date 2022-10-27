@@ -17,31 +17,36 @@ else
     _finalmax_ = _rightmax_
 
 
+# 1 with errors
+integer _nr1_ = 1
+integer _nr2_ = 2
+integer _nr3_ = 3
+integer _nr4_ = 4
+if _nr1_ > _nr2_
+    _leftmax_ = _nr1_
+else
+    _leftmax_ = _nr2_
+if nr3 > nr4
+    _rightmax_ = _nr3_
+else
+    _rightmax_ = _nr4_
+if _leftmax_ > _rightmax_
+    _finalmax_ = _leftmax_
+else
+    _finalmax_ = _rightmax_
 
--defunc p2(nr)-  # reverse of a number
-  -reversed_number = 0-
-  -while (nr != 0)-
-    -reversed_number = reversed_number * 10 + nr % 10-
-    -n /= 10-
-  -end-
 
-  -return reversed_number-
+# 2
+integer _nr_ = 2
+integer _randomnumber_ = 0
+WHILE _nr_ != 0
+    _randomnumber_ = _randomnumber_ * 10 + _nr_ - 1
+    _nr_ = _nr_ - 1
 end
 
--defunc p3(numbers)-     # sum of n numbers
-  -sum = 0-
-  -numbers.each do |number|-
-      -sum += number
-  -end-
 
-  -return sum-
--end-
-
--defunc p4(0_numbers)-    # p3 with lexical errors (variable that starts with number and dot at the end of the line)
-  -1_sum = 0.-
-  -0_numbers.each do |2_number|-
-      -1_sum += 2_number.-
-  -end-
-
-  -return 1_sum.-
--end-
+# 3
+integer _sum_ = 0
+FOR integer _i_ = 0 _i_ < 3 _i_++
+    _sum_ = _sum_ + _i_
+end

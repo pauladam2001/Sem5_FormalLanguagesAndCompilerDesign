@@ -1,0 +1,4 @@
+integer _sum_ = 0
+FOR integer _i_ = 0 _i_ < 3 _i_++
+    _sum_ = _sum_ + _i_
+end

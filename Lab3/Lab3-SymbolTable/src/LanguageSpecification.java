@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,6 +10,34 @@ public class LanguageSpecification {
     private final ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/", "=", "==", "!=", "<", ">", "<=", ">=", "&&", "||", "++", "--"));
     private final ArrayList<String> partOfOperators = new ArrayList<>(Arrays.asList("=", "!", "<", ">", "&", "|", "+", "-"));
     private final ArrayList<String> reservedWords = new ArrayList<>(Arrays.asList("integer", "char", "string", "FOR", "WHILE", "if", "elseif", "else", "puts", "break", "return", "next", "end"));
+    private final Map<String, Integer> codes = new HashMap<>();
+
+    public LanguageSpecification() {
+        createCodes();
+    }
+
+    public void createCodes() {
+        int code = 2;
+
+        codes.put("constant", 0);
+        codes.put("identifier", 1);
+        for(String separator : separators) {
+            codes.put(separator, code);
+            code += 1;
+        }
+        for (String operator : operators) {
+            codes.put(operator, code);
+            code += 1;
+        }
+        for (String reservedWord : reservedWords) {
+            codes.put(reservedWord, code);
+            code += 1;
+        }
+    }
+
+    public int getCode(String token) {
+        return codes.get(token);
+    }
 
     public boolean isSeparator(String token) {
         return separators.contains(token);

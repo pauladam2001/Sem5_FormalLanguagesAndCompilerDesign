@@ -1,0 +1,6 @@
+integer _nr_ = 2
+integer _randomnumber_ = 0
+WHILE _nr_ != 0
+    _randomnumber_ = _randomnumber_ * 10 + _nr_ - 1
+    _nr_ = _nr_ - 1
+end

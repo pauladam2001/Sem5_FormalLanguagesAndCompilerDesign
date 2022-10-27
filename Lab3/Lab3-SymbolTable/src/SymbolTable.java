@@ -25,7 +25,7 @@ public class SymbolTable {
     public boolean add(String key) {
         int hash = getHash(key);
 
-        if (!find(key)) {
+        if (find(key) == -1) {
             elements2.get(hash).add(new Pair<>(key, counter));
             counter += 1;
             return true;
@@ -33,17 +33,17 @@ public class SymbolTable {
         return false;
     }
 
-    public boolean find(String key) {
+    public int find(String key) {
         int hash = getHash(key);
 
         ArrayList<Pair<String, Integer>> pairs = elements2.get(hash);
         for (Pair<String, Integer> pair : pairs) {
             if (pair.getKey().equals(key)) {
-                return true;
+                return pair.getValue();
             }
         }
 
-        return false;
+        return -1;
     }
 
     @Override
