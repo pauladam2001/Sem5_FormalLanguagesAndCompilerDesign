@@ -1,0 +1,52 @@
+Github Link:
+
+Finite Automata:
+	It is structured as a class with fields for the alphabet, states, initial states, final states and transitions.
+	The initial state is a String.
+	The alphabet, states and final states are respresented as a Set of Strings (Set<String>).
+	The transitions are respresnted as a Map, having as key a Pair of 2 String values (the source state and the value through which it accesses the destination state) and as value a Set
+of Strings (the destination states) (Map<Pair<String, String>, Set<String>>).
+	In the case of a DFA a set will contain only one value.
+	We read the Finite Automata from a file, FA.in. Transitions that contain invalid states or characters, as well as duplicated transitions are ignored. 
+
+For a DFA, verify if a sequence is accepted by the FA:
+
+FA.in:
+POZA
+
+letter ::= 'a' | 'b' | ... | 'z' | 'A' | 'B' | ... | 'Z'
+digit ::= '0' | '1' | ... | '9'
+alphabetChar ::= letter | digit
+state ::= letter
+transition ::= state alphabet state
+states ::= {state}+
+alphabet ::= {alphabetChar}+
+initialState ::= state
+finalStates ::= {state}+
+FAFile ::= states '\n' alphabet '\n' initialState '\n' finalStates '\n' transitions 
+
+identifierFA.in:
+POZA
+
+identifier ::= '_' letter {(letter | digit)} '_'
+letter ::= 'a' | 'b' | ... | 'z' | 'A' | 'B' | ... | 'Z'
+digit ::= '0' | '1' | ... | '9'
+
+integerConstantFA.in:
+POZA
+
+integer_constant ::= [sign] nz_digit {digit} | '0'
+sign ::= '+' | '-'
+nz_digit ::= '1' | '2' | ... | '9'
+
+
+
+
+
+
+
+
+
+
+
+

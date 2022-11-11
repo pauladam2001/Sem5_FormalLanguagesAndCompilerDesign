@@ -1,0 +1,16 @@
+integer _nr1_ = 1
+integer _nr2_ = 2
+integer _nr3_ = 3
+integer _nr4_ = 4
+if _nr1_ > _nr2_
+    _leftmax_ = _nr1_
+else
+    _leftmax_ = _nr2_
+if nr3 > nr4
+    _rightmax_ = _nr3_
+else
+    _rightmax_ = _nr4_
+if _leftmax_ > _rightmax_
+    _finalmax_ = _leftmax_
+else
+    _finalmax_ = _rightmax_
