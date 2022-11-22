@@ -62,10 +62,6 @@ public class FiniteAutomata {
         }
     }
 
-    public boolean checkDFA() {
-        return transitions.values().stream().noneMatch(list -> list.size() > 1);
-    }
-
     public boolean checkSequence(String sequence) {
         if (sequence.length() == 0) {
             return finalStates.contains(initialState);
