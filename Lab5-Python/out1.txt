@@ -1,0 +1,78 @@
+n 0
+[]
+['S']
+Expand
+n 0
+[('S', 0)]
+['a', 'S', 'b', 'S']
+Advance
+n 1
+[('S', 0), 'a']
+['S', 'b', 'S']
+Expand
+n 1
+[('S', 0), 'a', ('S', 0)]
+['a', 'S', 'b', 'S', 'b', 'S']
+Momentary Insuccess
+b 1
+[('S', 0), 'a', ('S', 0)]
+['a', 'S', 'b', 'S', 'b', 'S']
+Another Try
+n 1
+[('S', 0), 'a', ('S', 1)]
+['a', 'S', 'b', 'S']
+Momentary Insuccess
+b 1
+[('S', 0), 'a', ('S', 1)]
+['a', 'S', 'b', 'S']
+Another Try
+n 1
+[('S', 0), 'a', ('S', 2)]
+['c', 'b', 'S']
+Advance
+n 2
+[('S', 0), 'a', ('S', 2), 'c']
+['b', 'S']
+Advance
+n 3
+[('S', 0), 'a', ('S', 2), 'c', 'b']
+['S']
+Expand
+n 3
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 0)]
+['a', 'S', 'b', 'S']
+Momentary Insuccess
+b 3
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 0)]
+['a', 'S', 'b', 'S']
+Another Try
+n 3
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 1)]
+['a', 'S']
+Momentary Insuccess
+b 3
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 1)]
+['a', 'S']
+Another Try
+n 3
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2)]
+['c']
+Advance
+n 4
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2), 'c']
+[]
+Success
+[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2), 'c']
+
+Result:
+Sequence is accepted!
+
+Parsing Tree: 
+Index Info Parent Left_sibling
+0  S  -1  -1
+1  a  0  2
+2  S  -1  4
+3  c  2  -1
+4  b  -1  5
+5  S  -1  -1
+6  c  5  -1
