@@ -20,49 +20,33 @@ b 1
 Another Try
 n 1
 [('S', 0), 'a', ('S', 1)]
-['a', 'S', 'b', 'S']
-Momentary Insuccess
-b 1
-[('S', 0), 'a', ('S', 1)]
-['a', 'S', 'b', 'S']
-Another Try
-n 1
-[('S', 0), 'a', ('S', 2)]
 ['c', 'b', 'S']
 Advance
 n 2
-[('S', 0), 'a', ('S', 2), 'c']
+[('S', 0), 'a', ('S', 1), 'c']
 ['b', 'S']
 Advance
 n 3
-[('S', 0), 'a', ('S', 2), 'c', 'b']
+[('S', 0), 'a', ('S', 1), 'c', 'b']
 ['S']
 Expand
 n 3
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 0)]
+[('S', 0), 'a', ('S', 1), 'c', 'b', ('S', 0)]
 ['a', 'S', 'b', 'S']
 Momentary Insuccess
 b 3
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 0)]
+[('S', 0), 'a', ('S', 1), 'c', 'b', ('S', 0)]
 ['a', 'S', 'b', 'S']
 Another Try
 n 3
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 1)]
-['a', 'S']
-Momentary Insuccess
-b 3
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 1)]
-['a', 'S']
-Another Try
-n 3
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2)]
+[('S', 0), 'a', ('S', 1), 'c', 'b', ('S', 1)]
 ['c']
 Advance
 n 4
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2), 'c']
+[('S', 0), 'a', ('S', 1), 'c', 'b', ('S', 1), 'c']
 []
 Success
-[('S', 0), 'a', ('S', 2), 'c', 'b', ('S', 2), 'c']
+[('S', 0), 'a', ('S', 1), 'c', 'b', ('S', 1), 'c']
 
 Result:
 Sequence is accepted!

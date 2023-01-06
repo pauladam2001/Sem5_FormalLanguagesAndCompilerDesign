@@ -43,6 +43,8 @@ class RecursiveDescendentParser:
         self.write_in_output_file("Expand")
         non_terminal = self.input_stack.pop(0)
         self.working_stack.append((non_terminal, 0))
+
+        # possible bug, because we always get the first production of a non terminal, instead of iterating through them and extracting them one by one
         new_production = self.grammar.get_productions_for_non_terminal(non_terminal)[0]
         self.input_stack = new_production + self.input_stack
 
@@ -92,11 +94,16 @@ class RecursiveDescendentParser:
             self.input_stack = new_production + self.input_stack
         elif self.index == 0 and last[0] == self.grammar.get_start_symbol()[0]:
             self.state = 'e'
+
+            # non_terminal = self.working_stack.pop()
+            # self.input_stack = last[0] + self.input_stack
+
         else:
             # change production on top input
             length_last_production = len(self.grammar.get_productions_for_non_terminal(last[0])[last[1]])
 
             # delete last production from input
+            # self.working_stack.pop()
             self.input_stack = self.input_stack[length_last_production:]
             self.input_stack = [last[0]] + self.input_stack
 
